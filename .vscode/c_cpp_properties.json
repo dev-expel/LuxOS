@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Watcom",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "~/open-watcom-v2/rel/binl/wcc",
+            "cStandard": "c17",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}

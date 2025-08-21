@@ -1,0 +1,104 @@
+Open Watcom Linker Version 2.0 beta Aug 18 2025 03:09:09 (32-bit)
+Copyright (c) 2002-2025 The Open Watcom Contributors. All Rights Reserved.
+Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
+Created on:       25/08/19 15:38:31
+Executable Image: /LuxOS/build/boot_s2.bin
+creating a RAW Binary Image executable
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          00000812             00000030
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+_ENTRY                 CODE           AUTO           00000000        00000013
+_TEXT                  CODE           AUTO           00000013        000007ff
+CONST                  DATA           DGROUP         00000812        0000001d
+CONST2                 DATA           DGROUP         00000830        00000011
+_DATA                  DATA           DGROUP         00000842        00000000
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: /LuxOS/build/stage2/asm/main.obj(main.asm)
+00000000       entry
+Module: /LuxOS/build/stage2/asm/x86.obj(x86.asm)
+00000013       __U4D
+0000003a       _x86_div64_32
+00000068       _x86_Video_WriteCharTeletype
+0000007b       _x86_Disk_Reset
+00000090       _x86_Disk_Read
+000000c5       _x86_Disk_GetDriveParams
+Module: /LuxOS/build/stage2/c/disk.obj(/LuxOS/src/bootloader/stage2/disk.c)
+00000109+      DISK_Initialise_
+0000017d+      DISK_LBA2CHS_
+00000230+      DISK_ReadSectors_
+Module: /LuxOS/build/stage2/c/main.obj(/LuxOS/src/bootloader/stage2/main.c)
+000002cd       _cstart_
+Module: /LuxOS/build/stage2/c/stdio.obj(/LuxOS/src/bootloader/stage2/stdio.c)
+000002e7+      printc_
+0000030e       print_
+00000345+      _printf
+000005a1+      printf_number_
+00000830+      _g_HexChars
+
+
+                        +---------------------+
+                        |   Module Segments   |
+                        +---------------------+
+
+! = 32-bit segment
+c = initialized communal data
+
+Module          Segment               Class           Address         Size
+======          =======               =====           =======         ====
+
+main.asm        _ENTRY                CODE           00000000         00000013
+x86.asm         _TEXT                 CODE           00000013         000000f6
+/LuxOS/src/bootloader/stage2/disk.c
+                _TEXT                 CODE           00000109         000001c4
+                CONST                 DATA           00000812         00000000
+                CONST2                DATA           00000830         00000000
+                _DATA                 DATA           00000842         00000000
+/LuxOS/src/bootloader/stage2/main.c
+                _TEXT                 CODE           000002cd         0000001a
+                CONST                 DATA           00000812         0000001d
+                CONST2                DATA           00000830         00000000
+                _DATA                 DATA           00000842         00000000
+/LuxOS/src/bootloader/stage2/stdio.c
+                _TEXT                 CODE           000002e7         0000052b
+                CONST                 DATA           00000830         00000000
+                CONST2                DATA           00000830         00000011
+                _DATA                 DATA           00000842         00000000
+Warning! W1014: stack segment not found
+
+
+                        +-----------------------+
+                        |   Linker Statistics   |
+                        +-----------------------+
+
+Stack size:  0200 (512.)
+Memory size:  0842 (2114.)
+Entry point address: 00000000
+Link time: 00:00.40
